@@ -1,0 +1,24 @@
+<div class="page-header">
+  <h3>Setup</h3>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h5>Monthly gas budget</h5>
+      </div>
+      <div class="panel-body">
+          <h4 *ngIf="setup != undefined"><b>{{ (setup)?.budget}} kr.</b></h4>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="form-group">
+      <label for="budgetInput">Update budget:</label>
+      <input class="form-control" [(ngModel)]="newBudget" placeholder="your current budget" type="number">
+    </div>
+     <button (click)="saveBudget()" class="btn btn-primary">Update</button> </div>
+</div>
+

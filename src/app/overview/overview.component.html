@@ -1,0 +1,84 @@
+<div class="page-header">
+  <h3>Overview</h3>
+</div>
+ 
+<div class="row">
+  <div class="col-sm-4">
+    <div class="panel" [class.panel-success]="((setup)?.budget - totalPrice) > 0"  [class.panel-danger]="((setup)?.budget - totalPrice) < 0">
+      <div class="panel-heading"> 
+        <h5>Rest</h5>
+      </div>
+      <div class="panel-body">
+          {{(setup)?.budget - totalPrice | number: '1.2-2'}} kr
+      </div>
+
+    </div>
+  </div>
+</div>
+ 
+<form>
+  <div class="form-group">
+    <label for="selectMonth">Month:</label>
+    <select [(ngModel)]="selectedMonth" name="month" class="form-control" (ngModelChange)="loadEntries()" id="selectMonth">
+      <option *ngFor="let month of months" [ngValue]="month.value">{{month.text}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="selectYear">Year:</label>
+    <select [(ngModel)]="selectedYear" name="year"  class="form-control" (ngModelChange)="loadEntries()"  id="selectYear">
+      <option *ngFor="let year of years" [ngValue]="year">{{year}}</option>
+    </select>
+  </div>
+</form>
+
+<div class="row">
+  <div class="col-md-6 col-lg-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Price</th>           
+          <th>Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let entry of entries"  (click)="goToDetails(entry)" >
+          <td>
+            {{ entry.index }}  
+          </td>
+          <td>
+            {{ entry.date | date:'dd/MM/yy' }}
+          </td>
+          <td>
+            {{ entry.price | number: '1.2-2'}} kr.
+          </td>
+          <td>
+            <button class="btn btn-danger btn-sm" (click)="deleteEntry(entry)">X</button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">Total: </td>
+          <td><b>{{ totalPrice | number: '1.2-2' }} kr.</b></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-4">
+    <div class="panel panel-default">
+      <div class="panel-heading"> 
+        <h5>Setup</h5>
+      </div>
+      <div class="panel-body">
+          {{(setup)?.budget | number: '1.2-2'}} kr
+      </div>
+    </div>
+  </div>
+</div>
+
+ 

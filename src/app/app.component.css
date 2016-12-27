@@ -1,0 +1,14 @@
+body {
+  padding-top: 5rem;
+}
+.starter-template {
+  padding: 3rem 1.5rem;
+}
+
+.navbar-nav li {
+    background-color: #222
+}
+.custom-nav {
+  margin-top:  2px;
+}
+

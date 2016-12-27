@@ -1,0 +1,20 @@
+<div class="page-header">
+  <h3 *ngIf="gasEntry !== undefined">{{gasEntry.date | date:'dd/MM/yy - hh:MM'}}</h3>
+</div>
+<div class="row" *ngIf="gasEntry !== undefined">
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label for="priceInput">Price:</label>
+      <input  class="form-control" [(ngModel)]="gasEntry.price" name="price" placeholder="price" type="number" id="priceInput">
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <button class="btn btn-primary" (click)="update()">Update</button>
+    <button class="btn btn-danger" (click)="remove()">Trash</button>
+    <button class="btn btn-info" (click)="goBack()">Go back</button>
+  </div>
+</div>
+
